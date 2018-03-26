@@ -1,5 +1,6 @@
 package hello
 
+import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Edge
 import org.apache.tinkerpop.gremlin.structure.T
 import org.apache.tinkerpop.gremlin.structure.Vertex
@@ -12,10 +13,10 @@ fun main(args: Array<String>) {
     println(graph.vertices().toList().count())
     println(graph.vertices().toList().map { it.values<Any>("name", "age").toList() })
 
-    val t = graph.traversal()
+    val t: GraphTraversalSource = graph.traversal()
     println(t.V().has("name", "vadas").valueMap<Any>().toList())
 
-    val c = graph.traversal().withComputer()
+    val c: GraphTraversalSource = graph.traversal().withComputer()
     println(c.withPath())
 
     val customGraph = TinkerGraph.open()
@@ -34,4 +35,3 @@ fun TinkerGraph.addEdge(inVertex: Vertex,
 }
 
 fun <T> Iterator<T>.toList() = asSequence().toList()
-
