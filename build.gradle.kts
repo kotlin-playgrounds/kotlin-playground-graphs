@@ -5,6 +5,7 @@ val kotlinVersion by project
 val tinkerpopVersion by extra { "3.3.1" }
 val jgraphxVersion by extra { "3.9.3" }
 val jgraphtVersion by extra { "1.1.0" }
+val slf4jVersion by extra { "1.7.25" }
 
 plugins {
     kotlin("jvm") version "1.2.30"
@@ -28,6 +29,9 @@ dependencies {
     compile("com.github.jgraph:jgraphx:v$jgraphxVersion")
     compile("org.jgrapht:jgrapht-core:$jgraphtVersion")
     compile("org.jgrapht:jgrapht-ext:$jgraphtVersion")
+
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:slf4j-simple:$slf4jVersion")
 }
 
 dependencies {
